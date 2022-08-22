@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card mb-3 bg-light mb-3 border border-dark mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                        alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Projects</h5>
+                        <p class="card-text">
+                            Create your projects & and manage accordingly.
+                        </p>
+                        <a href="{% url 'project' %}" class="btn btn-primary">Projects</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card mb-3 bg-light mb-3 border border-dark mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                        alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">TO DOs</h5>
+                        <p class="card-text">
+                            Create your TO DOs & and manage accordingly.
+                        </p>
+                        <a href="{% url 'todo' %}" class="btn btn-primary">TO DOs</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

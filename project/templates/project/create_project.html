@@ -1,0 +1,29 @@
+{% extends 'dashboard-base.html' %}
+
+{% block title %}
+Create Project
+{% endblock %}
+
+
+{% block values %}
+<span>Available Projects</span>
+<hr>
+{% for p in projects %}
+<a href="{% url 'project_detail' p.id%}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+    <i class="fas fa-caret-right me-3"></i><span>{{p.project_name}}</span>
+</a>
+{% endfor %}
+{% endblock %}
+
+<!-- Main Content to create projects -->
+{% block content %}
+
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'dashboard-base.html' %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+{% block values %}
+<span>Available Projects</span>
+<hr>
+{% for p in projects %}
+<a href="{% url 'project_detail' p.id%}" class="list-group-item list-group-item-action py-2 ripple "
+    aria-current="true">
+    <i class="fas fa-caret-right me-3"></i><span>{{p.project_name}}</span>
+</a>
+{% endfor %}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div>
+    Create A Project
+    <a href="{% url 'create_project' %}"><i class="fas fa-plus-circle"></i> </a>
+</div>
+
+{% endblock %}
+
+
+<!-- Different Page Layouts-->

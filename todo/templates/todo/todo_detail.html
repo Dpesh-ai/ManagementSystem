@@ -1,0 +1,105 @@
+{% extends 'dashboard-base.html' %}
+
+{% block title %}
+Todos
+{% endblock %}
+
+{%block css%}
+<style>
+    .dropdown-toggle:after {
+        display: none;
+    }
+</style>
+{%endblock%}
+
+{% block values %}
+<span>Available Projects</span>
+<hr>
+{% for t in todo %}
+<a href="{% url 'todo_details' t.id%}" class="list-group-item list-group-item-action py-2 ripple {% if t.id == pk %} 
+                                                                                                    active {% endif %}"
+    aria-current="true">
+    <i class="fas fa-caret-right me-3"></i><span>{{t.todo_name}}</span>
+</a>
+{% endfor %}
+{% endblock %}
+
+
+{% block content %}
+<div>
+    <h1>Todo Details</h1>
+    <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Type</th>
+                <th>Priority</th>
+                <th>Deadline</th>
+                <th>Assigned To</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in detail %}
+            <tr>
+            <td>
+                {%if d.completed%}
+                 <strike>{{d.task}}</strike>
+                {% else %}
+                {{d.task}}
+                {% endif %}
+            </td>
+
+            <td>{{d.task_type}}</td>
+
+            <td>{{d.priority}}</td>
+
+            <td>{{d.deadline}}</td> 
+            
+            <td>{{d.assigned_to}}</td>     
+            <td class="d-flex">
+                <a href="{% url 'edit_task' pk=d.id todo_id=pk %}"><i class="fas fa-edit me-2"></i></a>
+                    <a href="{% url 'delete_task_data' todo_id=pk pk=d.id %}" class="btn btn-danger btn-sm me-2"><i
+                            class="fa-solid fa-trash-can"></i></a>
+                <a href="{% url 'task_completed' todo_id=pk task_id=d.id %}" class="{% if d.completed %}text-success{%else%} text-dark{%endif%}"><i class="fa-solid fa-circle-check"></i></a>
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+
+    <div>
+        <a href="{% url 'create_task' pk  %}">
+            <button type="button" class="btn btn-primary mt-4">Add a task</button>
+        </a>
+        <a href="{% url 'delete_todo' pk %}"> <button type="button" class="btn btn-primary mt-4">Delete This
+                TODO</button> </a>
+        <a href="{% url 'edit_todo' pk %}"> <button type="button" class="btn btn-primary mt-4">Edit TODO</button>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- Different Page Layouts
+{% if currentPage %}
+
+{% block table %}
+
+<div> Table Here </div>
+
+{% endblock %}
+
+{% elif create %}
+
+
+
+{% endif %} -->

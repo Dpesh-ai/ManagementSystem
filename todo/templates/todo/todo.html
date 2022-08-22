@@ -1,0 +1,48 @@
+
+
+{% extends 'dashboard-base.html' %}
+
+{% block title %}
+Todo
+{% endblock %}
+
+{%block css%}
+<style>
+    .dropdown-toggle:after {
+        display: none;
+    }
+</style>
+{%endblock%}
+
+{% block values %}
+<span>Available Projects</span>
+<hr>
+{% for t in todo %}
+<a href="{% url 'todo_details' t.id%}" class="list-group-item list-group-item-action py-2 ripple"
+    aria-current="true">
+    <i class="fas fa-caret-right me-3"></i><span>{{t.todo_name}}</span>
+</a>
+{% endfor %}
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+    Create A Todo
+    <a href="{% url 'create_todo' %}"><i class="fas fa-plus-circle"></i> </a>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

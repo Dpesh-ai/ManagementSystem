@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Todo
+{% endblock %}
+
+
+{% block content %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the task ({{obj}}) ??</p>
+        <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+        <input type="submit" value="Confirm" />
+    </form>
+{% endblock %}
