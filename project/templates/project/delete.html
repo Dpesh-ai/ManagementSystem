@@ -1,0 +1,15 @@
+{% extends 'project/project-base.html' %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+
+{% block content %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the task ({{obj}}) ??</p>
+        <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+        <input class="btn btn-lg btn-primary" type="submit" value="Confirm">
+    </form>
+{% endblock %}

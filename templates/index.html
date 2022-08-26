@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div class="container" style="height: 100vh;">
+    <div class="row h-100 d-flex justify-content-center align-items-center">
+
+        <div class="col-lg-3">
+            <div class="card text-center shadow border border-primary">
+                <div class="card-body h3 m-0">
+                    <a href="{% url 'project' %}">Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card text-center shadow border border-danger">
+                <div class="card-body h3 m-0">
+                    <a class="text-danger" href="{% url 'todo' %}">Todo Tasks</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

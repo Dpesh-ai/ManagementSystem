@@ -1,0 +1,33 @@
+{% extends 'todo/todo-base.html' %}
+
+{% block title %}
+Create Task
+{% endblock %}
+
+
+{% block values %}
+<div class="container fw-bold text-danger mb-3">
+    Todos
+</div>
+
+{% for t in todo %}
+<a href="{% url 'todo_details' t.id%}" class="list-group-item list-group-item-action py-2 ripple small {% if t.id == pk %} 
+                                                                                                    active {% endif %}"
+    aria-current="true">
+    <i class="fas fa-caret-right me-3"></i><span>{{t.todo_name}}</span>
+</a>
+{% endfor %}
+{% endblock %}
+
+<!-- Main Content to create projects -->
+{% block content %}
+
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="btn btn-lg btn-danger" type="submit" value="Create Task">
+        </form>
+    </div>
+
+{% endblock %}

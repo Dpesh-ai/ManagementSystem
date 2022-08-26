@@ -1,0 +1,30 @@
+{% extends 'project/project-base.html' %}
+
+{% block title %}
+Create Project
+{% endblock %}
+
+
+<!-- Main Content to create projects -->
+{% block content %}
+<div class="container pb-5">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form row">
+            {{form.as_p}}
+        </div>
+        <input class="btn btn-lg btn-primary" type="submit" value="Create Task">
+    </form>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    $(function () {
+        $('form p').addClass('col-lg-6');
+    })
+</script>
+
+{% endblock %}

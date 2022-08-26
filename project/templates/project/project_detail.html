@@ -1,0 +1,180 @@
+{% extends 'project/project-base.html' %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+{%block css%}
+<style>
+    .dropdown-toggle:after {
+        display: none;
+    }
+</style>
+{%endblock%}
+
+
+
+{% block content %}
+<div>
+
+    <div class="items mb-3 d-flex justify-content-between">
+        <div class="project-name fs-5 fw-bold text-primary d-flex align-content-center">
+            Project Name
+
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+
+            <a class="btn btn-success btn-sm me-2 tip" data-toggle="tooltip" data-placement="top" title="Edit Project"
+                href="{% url 'edit_project' pk %}"> <i class="fas fa-edit"></i>
+            </a>
+
+            <a class="btn btn-danger btn-sm me-5 tip" data-toggle="tooltip" data-placement="top" title="Delete Project"
+                href="{% url 'delete_project' pk %}"><i class="fa-solid fa-trash-can"></i></a>
+
+            <a class="btn btn-primary btn-sm tip" data-toggle="tooltip" data-placement="top" title="Add Task"
+                href="{% url 'create_project_task' pk %}">
+                <i class="fas fa-plus"></i> Add
+            </a>
+
+
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table id="table_id">
+                <thead>
+                    <tr>
+                        <th>Backlog</th>
+                        <th>To DO</th>
+                        <th>Dev Started</th>
+                        <th>Dev Completed</th>
+                        <th>Review Started</th>
+                        <th>Review Done</th>
+                        <th>Closed</th>
+                        <th>Remarks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in detail %}
+                    <tr>
+                        {% if d.backlog %}
+                        <td id="backlog-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="backlog-td">_</td>
+                        {%endif%}
+
+                        {% if d.todo %}
+                        <td id="todo-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="todo-td">_</td>
+                        {%endif%}
+
+                        {% if d.dev_started %}
+                        <td id="dev_started-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="dev_started-td">_</td>
+                        {%endif%}
+
+                        {% if d.dev_completed %}
+                        <td id="dev_completed-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="dev_completed-td">_</td>
+                        {%endif%}
+
+                        {% if d.review_started %}
+                        <td class="review_started-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="review_started-td">_</td>
+                        {%endif%}
+
+                        {% if d.review_done %}
+                        <td class="review_done-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="review_done-td">_</td>
+                        {%endif%}
+
+
+                        {% if d.closed %}
+                        <td class="closed-td">{{d.data}}</td>
+                        {% else%}
+                        <td id="closed-td">_</td>
+                        {%endif%}
+
+                        {% if d.remarks %}
+                        <td class="remarks-td">{{d.remarks}}</td>
+                        {% else%}
+                        <td id="remarks-td">_</td>
+                        {%endif%}
+
+                        <td class="d-flex">
+                            <div class="dropdown me-2">
+                                <button class="btn btn-primary btn-sm dropdown-toggle tip" data-toggle="tooltip"
+                                    data-placement="top" title="Change Task Status" type="button" id="dropdownMenu2"
+                                    data-mdb-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <!-- {{pk}} -->
+                                    <li><a href="edit/shift_to/0/{{d.id}}" id="backlog" class="dropdown-item"
+                                            type="button">Backlog</a></li>
+                                    <li><a href="edit/shift_to/1/{{d.id}}" id="dev_started" class="dropdown-item"
+                                            type="button">Todo</a></li>
+                                    <li><a href="edit/shift_to/2/{{d.id}}" dev_started" class="dropdown-item"
+                                            type="button">Dev
+                                            Started</a></li>
+                                    <li><a href="edit/shift_to/3/{{d.id}}" dev_completed" class="dropdown-item"
+                                            type="button">Dev Completed</a>
+                                    </li>
+                                    <li><a href="edit/shift_to/4/{{d.id}}" review_started" class="dropdown-item"
+                                            type="button">Review Started</a>
+                                    </li>
+                                    <li><a href="edit/shift_to/5/{{d.id}}" review_done" class="dropdown-item"
+                                            type="button">Review Done</a></li>
+                                    <li><a href="edit/shift_to/7/{{d.id}}" closed" class="dropdown-item"
+                                            type="button">Closed</a></li>
+                                </ul>
+                            </div>
+                            <a href="{% url 'delete_data' pk=d.id project_id=pk %}" class="btn btn-danger btn-sm tip"
+                                data-toggle="tooltip" data-placement="top" title="Delete Task"><i
+                                    class="fa-solid fa-trash-can"></i></a>
+
+                            <!-- <a href="#" class="btn btn-dark btn-sm"> <i class="fa-solid fa-pen-to-square"></i> -->
+                            </a>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+
+
+</div>
+{% endblock %}
+
+
+<!-- Different Page Layouts
+{% if currentPage %}
+
+{% block table %}
+
+<div> Table Here </div>
+
+{% endblock %}
+
+{% elif create %}
+
+
+
+{% endif %} -->

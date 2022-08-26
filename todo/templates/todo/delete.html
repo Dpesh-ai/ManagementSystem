@@ -1,0 +1,17 @@
+{% extends 'todo/todo-base.html' %}
+
+{% block title %}
+Todo
+{% endblock %}
+
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the task ({{obj}}) ??</p>
+        <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+        <input class="btn btn-lg btn-danger" type="submit" value="Confirm">
+    </form>
+</div>
+{% endblock %}

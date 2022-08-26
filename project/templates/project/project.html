@@ -1,0 +1,32 @@
+{% extends 'project/project-base.html' %}
+
+{% block title %}
+Projects
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div style="height: 80vh;">
+    <div class="container h-100 d-flex justify-content-center align-items-center">
+        <div class="text-center px-3">
+
+
+            <div>
+                <a href="{% url 'create_project' %}" style="font-size:4.2rem;"><i class="fas fa-plus-circle"></i></a>
+            </div>
+            <div class="fw-bold text-primary">
+                New Project
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- Different Page Layouts-->

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="height:100vh;">
+    <div class="row h-100">
+        <div class="col-lg-6 border h-100 bg-secondary text-white">
+            <div class="p-4 d-flex justify-content-center align-items-center h-100" style="font-size:6rem;">
+                Mediaholic Nepal
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center align-items-center">
+            <a href="{% url 'login-page' %}" class="btn btn-secondary btn-lg">Login</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
